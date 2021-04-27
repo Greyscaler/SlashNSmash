@@ -1,0 +1,88 @@
+#! C:/Program Files/Nuke10.0v1/nuke-10.0.1.dll -nx
+#write_info Write1 file:"C:/Users/Viktor/Documents/3d_Unity/Slash&Smash/Assets/Images/bg.png" format:"1920 1080 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 100" fps:"0" colorspace:"default (sRGB)" datatype:"8 bit" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 10.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1920" h="1030" screen="0">
+        <splitter orientation="1">
+            <split size="46"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1233" stretch="1"/>
+            <splitter orientation="2">
+                <split size="561"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="395"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1" focus="true">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name C:/Users/Viktor/Documents/3d_Unity/Slash&Smash/Assets/Images/Source/.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Radial {
+ inputs 0
+ opacity 0.045
+ area {0 0 1920 1080}
+ name Radial1
+ xpos -124
+ ypos -113
+}
+Transform {
+ scale 1.54
+ center {960 540}
+ name Transform1
+ xpos -84
+ ypos -77
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {-0.128424 0.0002 0.0045 0}
+ color_panelDropped true
+ name Constant1
+ xpos 71
+ ypos -135
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 13
+ ypos -50
+}
+set N72c5c00 [stack 0]
+Viewer {
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos -45
+ ypos 23
+}
+push $N72c5c00
+Write {
+ file C:/Users/Viktor/Documents/3d_Unity/Slash&Smash/Assets/Images/bg.png
+ file_type png
+ checkHashOnRead false
+ version 1
+ name Write1
+ selected true
+ xpos 92
+ ypos 6
+}
