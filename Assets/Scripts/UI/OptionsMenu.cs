@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,13 @@ public class OptionsMenu : MonoBehaviour
     public GameObject previousMenu;
     private Transform optionsMenu;
     private bool isButtonInitialized = false;
- 
+    private InputMaster controls;
+
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.UI.Cancel.performed += ctx => OnClick();
+    }
     private void Start()
     {
         optionsMenu = GetComponent<Transform>();
@@ -21,6 +25,7 @@ public class OptionsMenu : MonoBehaviour
     
     private void OnEnable()
     {
+        controls.Enable();
         if (isButtonInitialized)
         {
             selectedButton.onClick.Invoke();
@@ -31,14 +36,15 @@ public class OptionsMenu : MonoBehaviour
             btn.onStart.AddListener(buttonInitialised);
         }
     }
-
-    private void Update()
+    private void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnClick();
-        }
+        controls.Disable();
     }
+    private void OnDestroy()
+    {
+        controls.UI.Cancel.performed -= ctx => OnClick();
+    }
+
     public void OnClick()
     {
         optionsMenu.gameObject.SetActive(false);

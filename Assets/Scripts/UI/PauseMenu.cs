@@ -3,27 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
-   
-    void Update()
+    private InputMaster controls;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        controls = new InputMaster();
+        controls.UI.Cancel.performed += ctx => OnCancel();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+    private void OnDestroy()
+    {
+        controls.UI.Cancel.performed -= ctx => OnCancel();
+    }
+    void OnCancel()
+    {
+        if (GameIsPaused)
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Resume();
         }
-        
+        else
+        {
+            Pause();
+        }
     }
     public void Resume()
     {
