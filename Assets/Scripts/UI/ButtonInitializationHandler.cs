@@ -7,13 +7,11 @@ public class ButtonInitializationHandler : MonoBehaviour
 {
     public GameObject firstSelectedButton;
     private ButtonInitialized buttonHandler;
-    private Button button;
     bool isButtonInitialized = false;
 
     private void Awake()
     {
         buttonHandler = firstSelectedButton.GetComponent<ButtonInitialized>();
-        
     }
     private void OnEnable()
     {
@@ -31,16 +29,15 @@ public class ButtonInitializationHandler : MonoBehaviour
     {
         buttonHandler.onStart.RemoveListener(SelectButton);
         isButtonInitialized = false;
-        EventSystem.current.SetSelectedGameObject(null);
+        if (EventSystem.current.currentSelectedGameObject == firstSelectedButton)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
     private void SelectButton()
-    {
-        Debug.Log("Trying");
+    {   
         isButtonInitialized = true;
-        button = firstSelectedButton.GetComponent<Button>();
-        button.Select();
-        
-        
+        EventSystem.current.SetSelectedGameObject(firstSelectedButton);
     }
 
 }
