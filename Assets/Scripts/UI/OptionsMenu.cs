@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class OptionsMenu : MonoBehaviour
@@ -23,9 +24,10 @@ public class OptionsMenu : MonoBehaviour
         
     }
     
-    private void OnEnable()
+    public void OnEnable()
     {
         controls.Enable();
+        EventSystem.current.SetSelectedGameObject(selectedButton.gameObject);
         if (isButtonInitialized)
         {
             selectedButton.onClick.Invoke();

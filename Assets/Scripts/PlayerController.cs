@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
    
     public float smooth = 1.0f;
     private float turnVelocity;
+    int isWalkingHash;
+    bool isWalking = false;
 
 
     private void Awake()
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        isWalkingHash = Animator.StringToHash("IsWalking");
     }
 
     private void OnEnable()
@@ -41,34 +44,34 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-
+    /*
     private void FixedUpdate()
     {
-        if (direction != 0)
-        {
-            rotationDirection = direction;
+        if (isWalking)
+        {   
             characterController.Move(new Vector3(direction, 0, 0).normalized * speed * Time.deltaTime);
-            
         }
        
-        if (Mathf.Abs(rotationDirection) >= 0.1f)
+        if (Mathf.Abs(direction) >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(rotationDirection, 0) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(direction, 0) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, smooth);
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
-    }
+       
+    }*/
     private void Move(float value)
     {
-        direction = value;
-        if (direction != 0)
+        if (value != 0f)
         {
-            animator.SetTrigger("Walk");
+            direction = value;
+            isWalking = true;
         }
         else
         {
-            animator.SetTrigger("Idle");
+            isWalking = false;
         }
+        animator.SetBool(isWalkingHash, isWalking);
     }
     private void Jump()
     {

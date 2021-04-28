@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 
@@ -11,8 +12,10 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
+    public GameObject firstSelectedButton;
+    
     private InputMaster controls;
-
+    
     private void Awake()
     {
         controls = new InputMaster();
@@ -26,11 +29,9 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
-    }
-    private void OnDestroy()
-    {
         controls.UI.Cancel.performed -= ctx => OnCancel();
     }
+    
     void OnCancel()
     {
         if (GameIsPaused)
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
             Pause();
         }
     }
+    
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -53,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
     }
     public void LoadMenu()
     {
