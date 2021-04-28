@@ -1189,7 +1189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1425898315}
   - component: {fileID: 1425898316}
-  - component: {fileID: 1425898317}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1231,19 +1230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f9ee488a0be9e4080d252f7e918aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1425898317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425898314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f13d69db5f273f47afc51de35189f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 1897089655}
 --- !u!1 &1477700299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,12 +1795,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1897089655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5be7c6421dfdcd47ace90ee9ea2718d, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d3cf4f5be9c2b47b27ed6e734e6024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
+  button: {fileID: 1897089657}
 --- !u!1001 &4319135452434023209
 PrefabInstance:
   m_ObjectHideFlags: 0
