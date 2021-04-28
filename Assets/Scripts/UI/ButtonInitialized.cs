@@ -9,9 +9,6 @@ public class ButtonInitialized : MonoBehaviour
 
 {
     public UnityEvent onStart;
-
-  
-
     private void Awake()
     {
         if (onStart == null)
