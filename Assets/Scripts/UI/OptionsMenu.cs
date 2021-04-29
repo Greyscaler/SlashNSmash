@@ -34,8 +34,8 @@ public class OptionsMenu : MonoBehaviour
         }
         else
         {
-            ButtonHandler btn = selectedButton.GetComponent<ButtonHandler>();
-            btn.onStart.AddListener(buttonInitialised);
+            ButtonBehaviour btn = selectedButton.GetComponent<ButtonBehaviour>();
+           // btn.onStart.AddListener(buttonInitialised);
         }
     }
     private void OnDisable()

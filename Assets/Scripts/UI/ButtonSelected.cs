@@ -1,22 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonSelected : MonoBehaviour
 {
-    private void OnEnable()
+    UnityEvent initialize;
+    public bool Click;
+    private Button button;
+    private void Awake()
     {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(this.gameObject);
-        Debug.Log("asd");
+        button = GetComponent<Button>();
+       // initialize = new UnityEvent();
     }
-    private void OnDisable()
+
+    private void Start()
     {
-        if (EventSystem.current.currentSelectedGameObject == this.gameObject)
+        if (this.gameObject.activeInHierarchy)
         {
-            EventSystem.current.SetSelectedGameObject(null);
+            SelectButton();   
+        }
+        else
+        {
+            //initialize.AddListener(SelectButton);
         }
     }
+    private void Update()
+    {
+        //initialize.Invoke();
+        SelectButton();
+    }
+    void SelectButton()
+    {
+        if (EventSystem.current != null && this.gameObject != null)
+        {
+           EventSystem.current.SetSelectedGameObject(this.gameObject);
+            if (Click)
+            {
+               // button.;
+            }
+        }
+    }
+    
+
 }

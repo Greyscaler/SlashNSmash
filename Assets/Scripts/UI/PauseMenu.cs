@@ -11,9 +11,6 @@ public class PauseMenu : MonoBehaviour
 
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    public GameObject optionsMenuUI;
-    public GameObject firstSelectedButton;
-    
     private InputMaster controls;
     
     private void Awake()
@@ -62,9 +59,5 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
-    public void LoadOptions()
-    {
-        pauseMenuUI.SetActive(false);
-        optionsMenuUI.SetActive(true);
-    }
+   
 }

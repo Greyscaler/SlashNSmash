@@ -2,28 +2,24 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject firstSelectedObject;
-    public void MainMenuToggle()
+    private MenuSwitch menuSwitch;
+    
+    private void Awake()
     {
-        if (!this.gameObject.activeInHierarchy)
-        {
-            this.gameObject.SetActive(!this.gameObject.activeInHierarchy);
-            if (EventSystem.current != null && firstSelectedObject != null)
-            {
-                EventSystem.current.SetSelectedGameObject(firstSelectedObject);
-            }
-        }
-        else
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            this.gameObject.SetActive(!this.gameObject.activeInHierarchy);
-        }
+        menuSwitch = GetComponent<MenuSwitch>();
+    }
+
+    private void DeselectEverything()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
     }
     public void PlayGame()
     {
+        DeselectEverything();
         SceneManager.LoadScene("Game");
     }
     public void QuitGame()
