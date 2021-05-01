@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine.Events;
 public class Settings : MonoBehaviour
 {
     public AudioMixerGroup masterAudioMixer;
@@ -12,9 +12,20 @@ public class Settings : MonoBehaviour
     public AudioMixerGroup sfxAudioMixer;
     public TMP_Dropdown resolutionDropdown;
     int currentResolutionIndex = 0;
+    private InputMaster controls;
+    public UnityEvent onEscape;
+
+    
+    
     
     Resolution[] resolutions;
 
+    
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.UI.Cancel.performed += ctx => onEscapeDown();
+    }
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -22,6 +33,20 @@ public class Settings : MonoBehaviour
         resolutionDropdown.AddOptions(ResolutionList(resolutions));
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+    }
+    private void OnEnable()
+    {
+        controls.UI.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.UI.Disable();
+    }
+
+    private void onEscapeDown()
+    {
+        Debug.Log("Esc");
+        onEscape.Invoke();
     }
 
     public void SetMasterVolume(float volume)

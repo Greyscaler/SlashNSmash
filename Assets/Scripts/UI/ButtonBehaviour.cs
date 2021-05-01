@@ -7,16 +7,20 @@ using UnityEngine.Events;
 public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler, ISubmitHandler
 {
     private Button button;
-    int isHoverHash,isSelectedHash;
+    int isHoverHash,isSelectedHash,isSubmitedHash;
     public bool autoClick;
     public bool autoSelect;
     public bool selectWhenHover;
-    
+    public bool deselectOtherButtons;
+
     void Awake()
     {
         button = GetComponent<Button>();
+        isSubmitedHash = Animator.StringToHash("isSubmited");
         isSelectedHash = Animator.StringToHash("isSelected");
         isHoverHash = Animator.StringToHash("isHover");
+       
+        
     }
     private void OnEnable()
     {
@@ -31,7 +35,6 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
             else if (autoSelect)
             {
                 button.Select();
-                Submit();
             }
             
         }
@@ -53,51 +56,39 @@ public class ButtonBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(!selectWhenHover)
+        if (!selectWhenHover)
         {
             button.animator.SetBool(isHoverHash, false);
         }
     }
     public void OnSelect(BaseEventData eventData)
     {
-        if(selectWhenHover)
-        {
-            button.animator.SetBool(isSelectedHash, true);
-        }
-        else
-        {
-            button.animator.SetBool(isHoverHash, true);
-        }
+        button.animator.SetBool(isSelectedHash, true);
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        if(selectWhenHover)
-        {
-            button.animator.SetBool(isSelectedHash, false);
-        }
-        else
-        {
-            button.animator.SetBool(isHoverHash, false);
-        }
+        button.animator.SetBool(isSelectedHash, false);
     }
     public void OnSubmit(BaseEventData eventData)
     {
         Submit(); 
     }
-    private void Submit()
+    public void Submit()
     {
         button = GetComponent<Button>();
-
-        button.animator.SetBool(isSelectedHash, true);
-
-        foreach (Transform btn in button.gameObject.transform.parent)               //Deselect all other buttons except selected
+        button.animator.SetBool(isSubmitedHash, true);
+        if (deselectOtherButtons)
         {
-            if (btn.gameObject != button.gameObject)
+            foreach (Transform btn in button.gameObject.transform.parent)               //Deselect all other buttons except selected
             {
-                Animator animator = btn.gameObject.GetComponent<Animator>();
-                animator.SetBool(isSelectedHash, false);
+                if (btn.gameObject != button.gameObject)
+                {
+                    Animator animator = btn.gameObject.GetComponent<Animator>();
+                    animator.SetBool(isSubmitedHash, false);
+                }
             }
         }
+        
     }
     
 }   

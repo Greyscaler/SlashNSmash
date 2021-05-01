@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-    /*
     private void FixedUpdate()
     {
         if (isWalking)
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
        
-    }*/
+    }
     private void Move(float value)
     {
         if (value != 0f)
