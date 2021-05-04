@@ -46,20 +46,18 @@ public class DefaultJump : MonoBehaviour, IJump
         _characterController.Move(_velocity * Time.deltaTime);
     }
     public void Jump()
-    {
-        _animator.SetTrigger("Jump");
+    {   
         StartCoroutine(waiter());
-        
     }
 
     IEnumerator waiter()
-    {       
-        yield return new WaitForSeconds(_jumpAnimationDelay);
+    {               
         if (isGrounded)
         {
+            _animator.SetTrigger("Jump");
+            yield return new WaitForSeconds(_jumpAnimationDelay);
             _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
         }
-
     }
 
 }
