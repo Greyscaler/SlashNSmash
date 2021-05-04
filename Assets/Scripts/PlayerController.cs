@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private InputMaster controls;
     private float _direction;
    
+   
     Imovable moveCharacter;
+    IJump jumpCharacter;
 
 
     private void Awake()
@@ -17,10 +19,12 @@ public class PlayerController : MonoBehaviour
         controls = new InputMaster();
         controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<float>());
         controls.Player.Movement.canceled += ctx => Move(0f);
+        controls.Player.Jump.performed += ctx => Jump();
     }
     private void Start()
     {
         moveCharacter = GetComponent<Imovable>();
+        jumpCharacter = GetComponent<IJump>();
     }
 
     private void OnEnable()
@@ -31,19 +35,14 @@ public class PlayerController : MonoBehaviour
     {
         controls.Disable();
     }
-  
-    private void FixedUpdate()
+     private void Move(float value)
     {
-        moveCharacter.Translate(_direction);
-        moveCharacter.Rotate(_direction);
-    }
-    private void Move(float value)
-    {
-        _direction = value;
+        moveCharacter.SetTranslate(new Vector3(value, 0, 0));
     }
     private void Jump()
     {
-
+        jumpCharacter.Jump();
+        
     }
     private void Crouch()
     { 

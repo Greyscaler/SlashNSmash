@@ -7,16 +7,17 @@ public class CharacterMovement : MonoBehaviour, Imovable
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _smoothTime = 1.0f;
     
-    private float _direction;
+    private Vector3 _direction;
     private CharacterController _characterController;
     private Transform _transform;
     private float turnVelocity;
+
     private Animator _animator;
     private bool isWalking= false;
     int isWalkingHash = Animator.StringToHash("IsWalking");
 
     public float Speed {get => _speed;set => _speed = value;}
-    public float Direction { get => _direction; set => _direction = value; }
+    public Vector3 Direction { get => _direction; set => _direction = value.normalized; }
 
 
     private void Awake()
@@ -25,11 +26,11 @@ public class CharacterMovement : MonoBehaviour, Imovable
         _transform = GetComponent<Transform>();
         _animator = GetComponent<Animator>();
     }
-    public void Translate(float direction)
+
+    private void FixedUpdate()
     {
-        Direction = direction;
-        _characterController.Move(new Vector3(_direction, 0, 0).normalized * _speed * Time.deltaTime);
-        if (_direction != 0f)
+        _characterController.Move(_direction * _speed * Time.deltaTime);
+        if (_direction.x != 0f)
         {
             isWalking = true;
         }
@@ -37,18 +38,24 @@ public class CharacterMovement : MonoBehaviour, Imovable
         {
             isWalking = false;
         }
-        _animator.SetBool(isWalkingHash,isWalking);
-        
-    }
 
-    public void Rotate(float direction)
-    {
-        Direction = direction;
-        if (Mathf.Abs(_direction) >= 0.1f)
+        if (Mathf.Abs(_direction.x) >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction, 0) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(_direction.x, 0) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnVelocity, _smoothTime);
             _transform.rotation = Quaternion.Euler(0, angle, 0);
         }
+
+        _animator.SetBool(isWalkingHash, isWalking);
+    }
+    public void SetTranslate(Vector3 direction)
+    {
+        Direction = direction;
+    }
+
+    public void SetRotate(Vector3 direction)
+    {
+        Direction = direction;
+        
     }
 }

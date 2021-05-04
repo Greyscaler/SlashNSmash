@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface Imovable
 {
-    void Translate(float direction);
-    void Rotate(float direction);
+    void SetTranslate(Vector3 direction);
+    void SetRotate(Vector3 direction);
 }

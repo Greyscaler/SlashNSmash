@@ -947,6 +947,8 @@ GameObject:
   - component: {fileID: 4288744441614907297}
   - component: {fileID: 149082538029981073}
   - component: {fileID: 2596707506233052767}
+  - component: {fileID: 735047024961565193}
+  - component: {fileID: 3124264258414030132}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -996,13 +998,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4288744441607505021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf9dcc87f083ef1478281dd09bdb6934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  turnSmoothTime: 0.5
 --- !u!143 &2596707506233052767
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1020,7 +1020,34 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &735047024961565193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4288744441607505021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ae65e2953943c4ab065376100f0556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
+  _smoothTime: 0.1
+--- !u!114 &3124264258414030132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4288744441607505021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0be2366c1cb9e4ab80b29fb33f1088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _height: 0
 --- !u!1 &4288744441607505023
 GameObject:
   m_ObjectHideFlags: 0
