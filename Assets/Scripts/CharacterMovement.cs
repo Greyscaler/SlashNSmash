@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour, Imovable
     [SerializeField] private float _smoothTime = 1.0f;
     
     private Vector3 _direction;
+    private Vector3 _rotationDirection;
     private CharacterController _characterController;
     private Transform _transform;
     private float turnVelocity;
@@ -25,6 +26,7 @@ public class CharacterMovement : MonoBehaviour, Imovable
         _characterController = GetComponent<CharacterController>();
         _transform = GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+        _rotationDirection = new Vector3(1,0,0);
     }
 
     private void FixedUpdate()
@@ -39,23 +41,26 @@ public class CharacterMovement : MonoBehaviour, Imovable
             isWalking = false;
         }
 
-        if (Mathf.Abs(_direction.x) >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(_direction.x, 0) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnVelocity, _smoothTime);
-            _transform.rotation = Quaternion.Euler(0, angle, 0);
-        }
+       float targetAngle = Mathf.Atan2(_rotationDirection.x, 0) * Mathf.Rad2Deg;
+       float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnVelocity, _smoothTime);
+       _transform.rotation = Quaternion.Euler(0, angle, 0);
+        
 
         _animator.SetBool(isWalkingHash, isWalking);
     }
     public void SetTranslate(Vector3 direction)
     {
         Direction = direction;
+        if (Mathf.Abs(_direction.x) >= 0.1f)
+        {
+            _rotationDirection = _direction;
+        }
     }
 
     public void SetRotate(Vector3 direction)
     {
-        Direction = direction;
         
+
+
     }
 }

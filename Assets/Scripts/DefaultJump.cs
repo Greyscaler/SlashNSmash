@@ -7,7 +7,7 @@ public class DefaultJump : MonoBehaviour, IJump
     [SerializeField] private float _height;
     [SerializeField] private LayerMask _groundMask;
 
-    private Vector3 _direction;
+    
     private CharacterController _characterController;
     private Vector3 _velocity;
     private float gravity;
@@ -17,7 +17,7 @@ public class DefaultJump : MonoBehaviour, IJump
     private float _groundDistance = 0.1f;
 
     
-    public Vector3 Direction { get => _direction; set => _direction = value.normalized; }
+   
 
     private void Awake()
     {
