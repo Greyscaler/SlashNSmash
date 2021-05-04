@@ -6,11 +6,14 @@ public class DefaultJump : MonoBehaviour, IJump
 {
     [SerializeField] private float _height;
     [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private float _jumpAnimationDelay = 0.15f;
 
     
     private CharacterController _characterController;
     private Vector3 _velocity;
     private float gravity;
+    private Animator _animator;
+
 
     private bool isGrounded = false;
     private Transform _groundCheck;
@@ -25,6 +28,7 @@ public class DefaultJump : MonoBehaviour, IJump
         _characterController = GetComponent<CharacterController>();
         _velocity.Set(0,0,0);
         gravity = Physics.gravity.y;
+        _animator = GetComponent<Animator>();
     }
 
 
@@ -43,10 +47,19 @@ public class DefaultJump : MonoBehaviour, IJump
     }
     public void Jump()
     {
+        _animator.SetTrigger("Jump");
+        StartCoroutine(waiter());
+        
+    }
+
+    IEnumerator waiter()
+    {       
+        yield return new WaitForSeconds(_jumpAnimationDelay);
         if (isGrounded)
         {
             _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
         }
+
     }
 
 }
