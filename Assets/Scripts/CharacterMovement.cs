@@ -29,7 +29,7 @@ public class CharacterMovement : MonoBehaviour, Imovable
         _rotationDirection = new Vector3(1,0,0);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         _characterController.Move(_direction * _speed * Time.deltaTime);
         if (_direction.x != 0f)
