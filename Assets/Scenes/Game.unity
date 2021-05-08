@@ -3423,7 +3423,7 @@ PrefabInstance:
       objectReference: {fileID: 1521260043}
     - target: {fileID: 5578997367627028937, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: _attackRange
-      value: 0.63
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5578997367627028937, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: _enemyLayer.m_Bits
@@ -3441,5 +3441,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1887086877519308696, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}

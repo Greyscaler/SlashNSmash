@@ -17,9 +17,9 @@ public class DefaultJump : MonoBehaviour, IJump
 
     private bool isGrounded = false;
     private Transform _groundCheck;
-    private float _groundDistance = 0.1f;
+    private float _groundDistance = 0.05f;
 
-    
+    int jumpHash = Animator.StringToHash("Jump");
    
 
     private void Awake()
@@ -50,19 +50,19 @@ public class DefaultJump : MonoBehaviour, IJump
         _characterController.Move(_velocity * Time.deltaTime);
     }
     public void Jump()
-    {   
-        StartCoroutine(OnJump());                                       //start jump after jump animation
+    {
+        if (isGrounded)
+        {
+            StartCoroutine(OnJump()); //start jump after jump animation
+        }
     }
 
     IEnumerator OnJump()
     {               
-        if (isGrounded)
-        {
-            _animator.SetBool("IsJumping", true);                       //Setting False in Animation Behaviour
-            yield return new WaitForSeconds(_jumpAnimationDelay);
-            _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
-            
-        }
+        _animator.SetTrigger(jumpHash);                       //Setting False in Animation Behaviour
+        yield return new WaitForSeconds(_jumpAnimationDelay);
+       _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
+  
     }
 
 }
