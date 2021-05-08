@@ -28,13 +28,17 @@ public class DefaultJump : MonoBehaviour, IJump
         _characterController = GetComponent<CharacterController>();
         _velocity.Set(0,0,0);
         gravity = Physics.gravity.y;
+        
+    }
+    private void Start()
+    {
         _animator = GetComponent<Animator>();
     }
 
 
     private void Update()
     {
-        isGrounded = Physics.CheckSphere(_groundCheck.position,_groundDistance,_groundMask);
+        isGrounded = Physics.CheckSphere(_groundCheck.position,_groundDistance,_groundMask);    //Creating sphere to check if character is grounded
 
         if (isGrounded && _velocity.y < 0)
         {
@@ -47,16 +51,17 @@ public class DefaultJump : MonoBehaviour, IJump
     }
     public void Jump()
     {   
-        StartCoroutine(waiter());
+        StartCoroutine(OnJump());                                       //start jump after jump animation
     }
 
-    IEnumerator waiter()
+    IEnumerator OnJump()
     {               
         if (isGrounded)
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetBool("IsJumping", true);                       //Setting False in Animation Behaviour
             yield return new WaitForSeconds(_jumpAnimationDelay);
             _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
+            
         }
     }
 
