@@ -7,8 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private InputMaster controls;
-    private float _direction;
-
+    
     private Character character;
 
 
@@ -20,6 +19,8 @@ public class PlayerController : MonoBehaviour
         controls.Player.Movement.canceled += ctx => Move(0f);
         controls.Player.Jump.performed += ctx => Jump();
         controls.Player.AttackPrimary.performed += ctx => PrimaryAttack();
+        controls.Player.Crouch.performed += ctx => Crouch(true);
+        controls.Player.Crouch.canceled += ctx => Crouch(false);
     }
     
 
@@ -40,9 +41,9 @@ public class PlayerController : MonoBehaviour
         character.Jump();
         
     }
-    private void Crouch()
-    { 
-    
+    private void Crouch(bool value)
+    {
+        character.Crouch(value);
     }
     private void PrimaryAttack()
     {

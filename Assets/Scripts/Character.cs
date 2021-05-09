@@ -9,6 +9,7 @@ public class Character : MonoBehaviour, IDamageable
     Imovable moveCharacter;
     IJump jumpCharacter;
     IPrimaryAttack primaryAttack;
+    ICrouch crouchCharacter;
 
     private Animator _animator;
     private int dieHash = Animator.StringToHash("IsDead");
@@ -27,6 +28,7 @@ public class Character : MonoBehaviour, IDamageable
         moveCharacter = GetComponent<Imovable>();
         jumpCharacter = GetComponent<IJump>();
         primaryAttack = GetComponent<IPrimaryAttack>();
+        crouchCharacter = GetComponent<ICrouch>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider>();
     }
@@ -49,16 +51,17 @@ public class Character : MonoBehaviour, IDamageable
     public void RecieveDamage(int value)
     {
         Health -= value;
+        _animator.SetTrigger(onHit);
         if (_health <= 0)
         {
             Die();
         }
-        else
-        {
-            _animator.SetTrigger(onHit);
-        }
     }
 
+    public void Crouch(bool value)
+    {
+        crouchCharacter.Crouch(value);
+    }
     public void GetProne()
     { 
         
@@ -67,7 +70,7 @@ public class Character : MonoBehaviour, IDamageable
     private void Die()
     {
         _animator.SetBool(dieHash,true);
-        _collider.enabled = false;
+        //_collider.enabled = false;
         Debug.Log(this.name + " is Dead");
         //this.enabled = false;
 

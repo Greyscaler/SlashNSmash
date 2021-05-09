@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour, Imovable
     public float Speed {get => _speed;set => _speed = value;}
     public Vector3 Direction { get => _direction; set => _direction = value.normalized; }
 
+    private ICrouch _crouchCharacter;
 
     private void Awake()
     {
@@ -31,22 +32,15 @@ public class CharacterMovement : MonoBehaviour, Imovable
 
     private void Update()
     {
-        _characterController.Move(_direction * _speed * Time.deltaTime);
-        if (_direction.x != 0f)
+        if (_animator.GetBool("IsCrouching") == true && _animator.GetBool("IsPrimaryAttack") == true)
         {
-            isWalking = true;
+
         }
         else
         {
-            isWalking = false;
+            Move();
         }
-
-       float targetAngle = Mathf.Atan2(_rotationDirection.x, 0) * Mathf.Rad2Deg;
-       float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnVelocity, _smoothTime);
-       _transform.rotation = Quaternion.Euler(0, angle, 0);
-        
-
-        _animator.SetBool(isWalkingHash, isWalking);
+        Rotate();
     }
     public void SetTranslate(Vector3 direction)
     {
@@ -57,10 +51,33 @@ public class CharacterMovement : MonoBehaviour, Imovable
         }
     }
 
+
     public void SetRotate(Vector3 direction)
     {
         
 
 
+    }
+
+    private void Move()
+    {
+        _characterController.Move(_direction * _speed * Time.deltaTime);
+        if (_direction.x != 0f)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+
+        _animator.SetBool(isWalkingHash, isWalking);
+    }
+
+    private void Rotate()
+    {
+        float targetAngle = Mathf.Atan2(_rotationDirection.x, 0) * Mathf.Rad2Deg;
+        float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnVelocity, _smoothTime);
+        _transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 }

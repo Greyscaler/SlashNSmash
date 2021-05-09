@@ -19,7 +19,7 @@ public class DefaultJump : MonoBehaviour, IJump
     private Transform _groundCheck;
     private float _groundDistance = 0.05f;
 
-    int jumpHash = Animator.StringToHash("Jump");
+    int jumpHash = Animator.StringToHash("IsJumping");
    
 
     private void Awake()
@@ -59,7 +59,7 @@ public class DefaultJump : MonoBehaviour, IJump
 
     IEnumerator OnJump()
     {               
-        _animator.SetTrigger(jumpHash);                       //Setting False in Animation Behaviour
+        _animator.SetBool(jumpHash,true);                       //Setting False in Animation Behaviour
         yield return new WaitForSeconds(_jumpAnimationDelay);
        _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
   
