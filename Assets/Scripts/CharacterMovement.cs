@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour, Imovable
 {
-    [SerializeField] private float _speed = 10f;
-    [SerializeField] private float _smoothTime = 1.0f;
     
+    [SerializeField] private float _acceleration = 0.1f;
+    [SerializeField] private float _smoothTime = 1.0f;
+    [SerializeField] private float _maxSpeed = 10f;
+
+    private float _speed = 0f;
     private Vector3 _direction;
+    private float _prevDirection;
     private Vector3 _rotationDirection;
     private CharacterController _characterController;
     private Transform _transform;
@@ -32,19 +36,18 @@ public class CharacterMovement : MonoBehaviour, Imovable
 
     private void Update()
     {
-        if (_animator.GetBool("IsCrouching") == true && _animator.GetBool("IsPrimaryAttack") == true)
-        {
-
-        }
-        else
-        {
-            Move();
-        }
+        
+        
+        Move();
         Rotate();
+        _animator.SetFloat("Speed", Mathf.Abs(_speed)/_maxSpeed);
+        _animator.SetBool(isWalkingHash, isWalking);
     }
     public void SetTranslate(Vector3 direction)
     {
         Direction = direction;
+        
+        
         if (Mathf.Abs(_direction.x) >= 0.1f)
         {
             _rotationDirection = _direction;
@@ -58,20 +61,42 @@ public class CharacterMovement : MonoBehaviour, Imovable
 
 
     }
+    
 
     private void Move()
     {
-        _characterController.Move(_direction * _speed * Time.deltaTime);
-        if (_direction.x != 0f)
+        if (_direction.x == 0)
         {
-            isWalking = true;
+            if (_speed > 0)
+            {
+                _speed -= _acceleration;
+                _speed = Mathf.Clamp(_speed, 0, _maxSpeed);
+            }
+            else if (_speed < 0)
+            {
+
+                _speed += _acceleration;
+                _speed = Mathf.Clamp(_speed, -_maxSpeed, 0);
+            }
+            isWalking = false;
         }
         else
         {
-            isWalking = false;
-        }
+            if (_direction.x > 0)
+            {
+                _speed += _acceleration;
 
-        _animator.SetBool(isWalkingHash, isWalking);
+            }
+            else
+            {
+                _speed -= _acceleration;
+            }
+            _speed = Mathf.Clamp(_speed, -_maxSpeed, _maxSpeed);
+            isWalking = true;
+        }
+        _characterController.Move(new Vector3(_speed, 0, 0) * Time.deltaTime);
+
+
     }
 
     private void Rotate()

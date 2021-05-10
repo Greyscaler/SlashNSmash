@@ -7,8 +7,10 @@ public class DefaultJump : MonoBehaviour, IJump
     [SerializeField] private float _height;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _jumpAnimationDelay = 0.15f;
+    [SerializeField] private float _jumpRate = 1f;
+    private float _jumpTime = 0f;
 
-    
+
     private CharacterController _characterController;
     private Vector3 _velocity;
     private float gravity;
@@ -19,7 +21,8 @@ public class DefaultJump : MonoBehaviour, IJump
     private Transform _groundCheck;
     private float _groundDistance = 0.05f;
 
-    int jumpHash = Animator.StringToHash("IsJumping");
+    int jumpHash = Animator.StringToHash("Jump");
+    int isGroundedHash = Animator.StringToHash("IsGrounded");
    
 
     private void Awake()
@@ -43,6 +46,11 @@ public class DefaultJump : MonoBehaviour, IJump
         if (isGrounded && _velocity.y < 0)
         {
             _velocity.y = -2f;
+            _animator.SetBool(isGroundedHash, true);
+        }
+        else
+        {
+            _animator.SetBool(isGroundedHash,false);
         }
         
         _velocity.y += gravity * Time.deltaTime;
@@ -51,17 +59,22 @@ public class DefaultJump : MonoBehaviour, IJump
     }
     public void Jump()
     {
-        if (isGrounded)
+        if (Time.time >= _jumpTime && isGrounded)
         {
             StartCoroutine(OnJump()); //start jump after jump animation
+            _jumpTime = Time.time + 1f / _jumpRate;
+        }
+        if (isGrounded)
+        {
+            
         }
     }
 
     IEnumerator OnJump()
     {               
-        _animator.SetBool(jumpHash,true);                       //Setting False in Animation Behaviour
+        _animator.SetTrigger(jumpHash);                       //Setting False in Animation Behaviour
         yield return new WaitForSeconds(_jumpAnimationDelay);
-       _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
+        _velocity.y = Mathf.Sqrt(_height * -2f * gravity);
   
     }
 

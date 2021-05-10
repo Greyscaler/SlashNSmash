@@ -14,14 +14,12 @@ public class Character : MonoBehaviour, IDamageable
     private Animator _animator;
     private int dieHash = Animator.StringToHash("IsDead");
     private int onHit = Animator.StringToHash("Hit");
-
+   
     private int _health = 30;
     private int _maxHealth = 100;
 
     public int Health { get => _health; set =>_health = value; }
     public int MaxHealth { get => _maxHealth; set => _maxHealth = value; }
-
-    private Collider _collider;
 
     private void Awake()
     {
@@ -30,7 +28,6 @@ public class Character : MonoBehaviour, IDamageable
         primaryAttack = GetComponent<IPrimaryAttack>();
         crouchCharacter = GetComponent<ICrouch>();
         _animator = GetComponent<Animator>();
-        _collider = GetComponent<Collider>();
     }
 
     public void Move(Vector3 direction)

@@ -670,6 +670,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4288744441607505021, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4288744441607505023, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3313,6 +3317,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 735047024961565193, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
+      propertyPath: _acceleration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1887086877519308696, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3351,7 +3359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3124264258414030132, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: _height
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3124264258414030132, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
       propertyPath: _groundMask.m_Bits

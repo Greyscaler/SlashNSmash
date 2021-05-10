@@ -19,7 +19,8 @@ public class OnAttackEnd : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("IsPrimaryAttack",false);    
+        animator.SetBool("IsPrimaryAttack", false);
+        Debug.Log("EndAttack");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

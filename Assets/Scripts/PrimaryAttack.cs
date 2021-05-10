@@ -5,7 +5,7 @@ using UnityEngine;
 public class PrimaryAttack : MonoBehaviour, IPrimaryAttack
 {
     private Animator _animator;
-    int attackHash = Animator.StringToHash("IsPrimaryAttack");
+    int attackHash = Animator.StringToHash("PrimaryAttack");
 
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private Transform _attackPoint;
@@ -35,19 +35,27 @@ public class PrimaryAttack : MonoBehaviour, IPrimaryAttack
 
     IEnumerator Attack()
     {
-        _animator.SetBool(attackHash,true);
+        _animator.SetTrigger(attackHash);
 
         if (_animator.GetBool("IsJumping") == true)
         {
             _primaryAttackAnimationDelay = 0.7f;
         }
-        else if (_animator.GetBool("IsWalking") == true && _animator.GetBool("IsJumping") == false)
+        else if (_animator.GetBool("IsWalking") == true && _animator.GetBool("IsGrounded") == false)
         {
             _primaryAttackAnimationDelay = 0.175f;
         }
-        else if (_animator.GetBool("IsWalking") == false && _animator.GetBool("IsJumping") == false)
+        else if (_animator.GetBool("IsWalking") == false && _animator.GetBool("IsGrounded") == false)
         {
             _primaryAttackAnimationDelay = 0.226f;
+        }
+        if (_animator.GetBool("IsCrouching"))
+        {
+            _animator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            _animator.SetLayerWeight(1, 0);
         }
 
         
