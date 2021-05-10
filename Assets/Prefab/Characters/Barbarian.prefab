@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 5578997367627028937}
   - component: {fileID: 4852153151366447113}
   - component: {fileID: 4243328334571298013}
+  - component: {fileID: 9030350885862995972}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -1038,7 +1039,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!114 &735047024961565193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,8 +1052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ae65e2953943c4ab065376100f0556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _acceleration: 0.2
   _smoothTime: 0.1
+  _maxSpeed: 10
 --- !u!114 &3124264258414030132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,8 +1070,9 @@ MonoBehaviour:
   _height: 3
   _groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _jumpAnimationDelay: 0.15
+  _jumpRate: 1
 --- !u!114 &5578997367627028937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,7 +1090,7 @@ MonoBehaviour:
     m_Bits: 128
   _attackPoint: {fileID: 7068136416852328689}
   _attackRange: 1
-  _primaryAttackAnimationDelay: 0.5
+  _primaryAttackAnimationDelay: 0.15
   _attackRate: 1
 --- !u!114 &4852153151366447113
 MonoBehaviour:
@@ -1111,6 +1114,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48684f65f0ce39a4b8c9f896e92cda07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9030350885862995972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4288744441607505021}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9dcc87f083ef1478281dd09bdb6934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4288744441607505023
