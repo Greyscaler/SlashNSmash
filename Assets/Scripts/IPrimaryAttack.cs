@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IPrimaryAttack
 {
     public void PrimaryAttack();
+    public void CheckForCollision();
 }

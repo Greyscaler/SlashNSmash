@@ -10,14 +10,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float margine = 5.0f;
     private Transform player;
     private Transform enemy;
-    private Camera camera;
+    private Camera mainCamera;
     private float cosAngle, camPosX, camPosZ;
     void Start()
     {
         player = playerSpawn.GetChild(0);
         enemy = enemySpawn.GetChild(0);
-        camera = GetComponent<Camera>();
-        cosAngle = Mathf.Cos((camera.fieldOfView / 2)*Mathf.Deg2Rad);
+        mainCamera = GetComponent<Camera>();
+        
+        cosAngle = Mathf.Cos((mainCamera.fieldOfView / 2)*Mathf.Deg2Rad);
     }
     void Update()
     {

@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 406967894}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 599557680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,6 +1182,7 @@ MonoBehaviour:
   playerSpawn: {fileID: 599557680}
   enemySpawn: {fileID: 406967894}
   minZDistance: 10
+  margine: 5
 --- !u!1 &1087014177
 GameObject:
   m_ObjectHideFlags: 0
