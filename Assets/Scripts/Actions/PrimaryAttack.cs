@@ -42,7 +42,7 @@ public class PrimaryAttack : Attack, IPrimaryAttack
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(_attackPoint.position,_attackRange);
+        Gizmos.DrawWireSphere(_attackPoint.position,_attackRange);              //Draw WireSphere in the viewport of the editor
     }
 
     public void CheckForCollision()
@@ -82,7 +82,7 @@ public class PrimaryAttack : Attack, IPrimaryAttack
 
         //Debug.Log(LayerMask.LayerToName((int)Mathf.Log(_enemyLayerMask.value, 2)));      // Mathf.Log... dirty way to get layermask where is a single layer
         
-        Collider[] enemies = Physics.OverlapSphere(_attackPoint.position, _attackRange, _enemyLayerMask);
+        Collider[] enemies = Physics.OverlapSphere(_attackPoint.position, _attackRange, _enemyLayerMask);       //Get Array of colliders which intersected OverlapSphere
 
 
         foreach (Collider enemy in enemies)

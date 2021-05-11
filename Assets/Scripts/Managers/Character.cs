@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
-    private float _direction;
-
     Imovable moveCharacter;
     IJump jumpCharacter;
     IPrimaryAttack primaryAttack;
+    ISecondaryAttack secondaryAttack;
     ICrouch crouchCharacter;
 
     private Animator _animator;
@@ -31,12 +28,12 @@ public class Character : MonoBehaviour, IDamageable
         moveCharacter = GetComponent<Imovable>();
         jumpCharacter = GetComponent<IJump>();
         primaryAttack = GetComponent<IPrimaryAttack>();
+        secondaryAttack = GetComponent<ISecondaryAttack>();
         crouchCharacter = GetComponent<ICrouch>();
         _animator = GetComponent<Animator>();
     }
     private int GetEnemyLayer(int[] layers, int playerLayer)
-    {
-        
+    {   
         foreach (int layer in layers)
         {
             if (layer != playerLayer)
@@ -60,6 +57,10 @@ public class Character : MonoBehaviour, IDamageable
     public void PrimaryAttack()
     {
         primaryAttack.Attack();
+    }
+    public void SecondaryAttack()
+    {
+        secondaryAttack.Attack();
     }
 
     public void RecieveDamage(int value)

@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Movement.canceled += ctx => Move(0f);
         controls.Player.Jump.performed += ctx => Jump();
         controls.Player.AttackPrimary.performed += ctx => PrimaryAttack();
+        controls.Player.AttackSecondary.performed += ctx => SecondaryAttack();
         controls.Player.Crouch.performed += ctx => Crouch(true);
         controls.Player.Crouch.canceled += ctx => Crouch(false);
     }
@@ -48,5 +49,9 @@ public class PlayerController : MonoBehaviour
     private void PrimaryAttack()
     {
         character.PrimaryAttack();
+    }
+    private void SecondaryAttack()
+    {
+        character.SecondaryAttack();
     }
 }
