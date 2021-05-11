@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,24 +5,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject character;
     [SerializeField] private Transform spawnPointPlayer;
     [SerializeField] private Transform spawnPointEnemy;
-    [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private LayerMask enemyLayer;
     private GameObject player;
     private GameObject enemy;
+    private int[] _layers = new int[2];
+    public int[] Layers => _layers;
     public Transform SpawnPointPlayer => spawnPointPlayer;
     private void Awake()
     {
+        _layers[0] = spawnPointPlayer.gameObject.layer;
+        _layers[1] = spawnPointEnemy.gameObject.layer;
         SpawnPlayer();
         SpawnEnemy();
-
-        
     }
-
     private void SpawnPlayer()
     {
         player = Instantiate(character, spawnPointPlayer);
         player.gameObject.name = "BarbarianPlayer";
-        player.layer = spawnPointPlayer.gameObject.layer;
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.enabled = true;
     }
@@ -32,9 +28,10 @@ public class GameManager : MonoBehaviour
     {
         enemy = Instantiate(character, spawnPointEnemy);
         enemy.gameObject.name = "BarbarianEnemy";
-        enemy.layer = spawnPointEnemy.gameObject.layer;
         AI enemyController = enemy.GetComponent<AI>();
-        enemyController.enabled = true;
+        //enemyController.enabled = true;
     }
+
+
 
 }

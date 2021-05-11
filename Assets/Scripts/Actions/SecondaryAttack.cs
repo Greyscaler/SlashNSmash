@@ -8,4 +8,8 @@ public class SecondaryAttack : MonoBehaviour, ISecondaryAttack
     {
         
     }
+    public void CheckForCollision()
+    { 
+    
+    }
 }
