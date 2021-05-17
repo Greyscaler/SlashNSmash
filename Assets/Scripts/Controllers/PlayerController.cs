@@ -53,7 +53,15 @@ public class PlayerController : MonoBehaviour
     }
     public void Crouch(InputAction.CallbackContext ctx)
     {
-        character.Crouch(true);
+        if(ctx.performed)
+        {
+            character.Crouch(true);
+        }
+        else if(ctx.canceled)
+        {
+            character.Crouch(false);
+        }
+        
     }
     public void PrimaryAttack(InputAction.CallbackContext ctx)
     {
