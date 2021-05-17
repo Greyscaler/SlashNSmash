@@ -12,6 +12,8 @@ public class Character : MonoBehaviour, IDamageable
     private int _enemyLayer;
     private int dieHash = Animator.StringToHash("IsDead");
     private int onHit = Animator.StringToHash("Hit");
+    private bool _movementEnabled = true;
+    private bool _attackEnabled = true;
    
     private int _health = 30;
     private int _maxHealth = 100;
@@ -19,6 +21,9 @@ public class Character : MonoBehaviour, IDamageable
     public int EnemyLayer => _enemyLayer;
     public int Health { get => _health; set =>_health = value; }
     public int MaxHealth { get => _maxHealth; set => _maxHealth = value; }
+
+    public bool MovementEnabled { get => _movementEnabled; set => _movementEnabled = value; }
+    public bool AttackEnabled { get => _attackEnabled; set => _attackEnabled = value; }
 
     private void Awake()
     {
@@ -46,21 +51,33 @@ public class Character : MonoBehaviour, IDamageable
 
     public void Move(Vector3 direction)
     {
-        moveCharacter.SetTranslate(direction);
+        if (_movementEnabled)
+        {
+            moveCharacter.SetTranslate(direction);
+        }
     }
 
     public void Jump()
     {
-        jumpCharacter.Jump();
+        if (_movementEnabled)
+        {
+            jumpCharacter.Jump();
+        }
     }
 
     public void PrimaryAttack()
     {
-        primaryAttack.Attack();
+        if (_attackEnabled)
+        {
+            primaryAttack.Attack();
+        }
     }
     public void SecondaryAttack()
     {
-        secondaryAttack.Attack();
+        if (_attackEnabled)
+        {
+            secondaryAttack.Attack();
+        }
     }
 
     public void RecieveDamage(int value)
@@ -75,7 +92,10 @@ public class Character : MonoBehaviour, IDamageable
 
     public void Crouch(bool value)
     {
-        crouchCharacter.Crouch(value);
+        if (_movementEnabled)
+        {
+            crouchCharacter.Crouch(value);
+        }
     }
     public void GetProne()
     { 

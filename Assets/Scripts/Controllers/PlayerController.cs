@@ -1,56 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 
 public class PlayerController : MonoBehaviour
 {
-    private InputMaster controls;
+    //private InputMaster controls;
     
     private Character character;
-
-
+  
     private void Awake()
     {
+        
         character = GetComponent<Character>();
+        /*
         controls = new InputMaster();
-        controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<float>());
-        controls.Player.Movement.canceled += ctx => Move(0f);
+        controls.Player.Movement.performed += ctx => Move(ctx.ReadValue<float>(),ctx);
+        controls.Player.Movement.canceled += ctx => Move(0f, ctx);
         controls.Player.Jump.performed += ctx => Jump();
         controls.Player.AttackPrimary.performed += ctx => PrimaryAttack();
         controls.Player.AttackSecondary.performed += ctx => SecondaryAttack();
         controls.Player.Crouch.performed += ctx => Crouch(true);
         controls.Player.Crouch.canceled += ctx => Crouch(false);
+        */
     }
-    
 
     private void OnEnable()
     {
-        controls.Enable();
+        //controls.Enable();
     }
     private void OnDisable()
     {
-        controls.Disable();
+        //controls.Disable();
     }
-     private void Move(float value)
+    public void Move(InputAction.CallbackContext ctx)
     {
-        character.Move(new Vector3(value,0,0));
-    }
-    private void Jump()
-    {
-        character.Jump();
+        if(ctx.performed)
+        {
+            character.Move(new Vector3(ctx.ReadValue<float>(), 0, 0));
+        }
+        else if(ctx.canceled)
+        {
+            character.Move(new Vector3(0, 0, 0));
+        }
         
     }
-    private void Crouch(bool value)
-    {
-        character.Crouch(value);
+    
+    public void Jump(InputAction.CallbackContext ctx)
+    {   
+        character.Jump();
     }
-    private void PrimaryAttack()
+    public void Crouch(InputAction.CallbackContext ctx)
+    {
+        character.Crouch(true);
+    }
+    public void PrimaryAttack(InputAction.CallbackContext ctx)
     {
         character.PrimaryAttack();
     }
-    private void SecondaryAttack()
+    public void SecondaryAttack(InputAction.CallbackContext ctx)
     {
         character.SecondaryAttack();
     }

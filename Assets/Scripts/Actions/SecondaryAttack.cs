@@ -2,58 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondaryAttack : Attack //ISecondaryAttack
+public class SecondaryAttack : MeleeAttack, ISecondaryAttack
 {
-    
-    
-    /*
-    [SerializeField] private Transform _attackPoint;
-    [SerializeField] private float _attackRange;
-    private LayerMask _enemyLayerMask;
-
-    private Animator _animator;
-    private Character _character;
-    private float _secondaryAttackAnimationDelay = 0.5f;
-
-    int attackHash = Animator.StringToHash("SecondaryAttack");
+    [SerializeField] private float _knockbackForce = 10f;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _character = GetComponent<Character>();
+        AttackHash = Animator.StringToHash("SecondaryAttack");
     }
-    private void Start()
+    override protected float AttackAnimationDelay(Animator animator)
     {
-        _enemyLayerMask = LayerMask.GetMask(LayerMask.LayerToName(_character.EnemyLayer));
+        return 0.5f;
     }
-    public void Attack()
+
+    protected override void ApplyDamage(Collider enemy)
     {
-        if (Time.time >= AttackTime)
+        enemy.GetComponent<Character>().RecieveDamage(AttackForce);
+        KnockBack(enemy);
+    }
+
+    private void KnockBack(Collider enemy)
+    {
+        Imovable _enemyMovement = enemy.GetComponent<Imovable>();
+        Imovable _playerMovement = GetComponent<Imovable>();
+        float speedboost = 0f;
+
+        if(_animator.GetBool("IsWalking"))
         {
-            _animator.SetTrigger(attackHash);
-            AttackTime = Time.time + 1f / AttackRate;
+            speedboost = _playerMovement.MaxSpeed.x;
         }
-    }
-    public void CheckForCollision()
-    {
-        StartCoroutine(PerformAttack());
-    }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);              //Draw WireSphere in the viewport of the editor
-    }
 
-    IEnumerator PerformAttack()
-    {
-        yield return new WaitForSeconds(_secondaryAttackAnimationDelay);
-        //GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //sphere.transform.position = _attackPoint.position;
-        Collider[] enemies = Physics.OverlapSphere(_attackPoint.position, _attackRange, _enemyLayerMask);       //Get Array of colliders which intersected OverlapSphere
-
-
-        foreach (Collider enemy in enemies)
+        if (transform.position.x > enemy.transform.position.x)
         {
-            Debug.Log(enemy.name + " Hit on " + AttackForce + " Damage");
-            enemy.GetComponent<Character>().RecieveDamage(AttackForce);
+            _enemyMovement.Speed = new Vector3(-_knockbackForce -speedboost, 0, 0);
         }
-    }*/
+        else
+        {
+            _enemyMovement.Speed = new Vector3(_knockbackForce + speedboost, 0, 0);
+        }
+
+    }
 }
