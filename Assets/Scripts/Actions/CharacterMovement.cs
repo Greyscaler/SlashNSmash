@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour, Imovable
     {
         Move();
         Rotate();
-        _animator.SetFloat("Speed", Mathf.Abs(_speed.x)/_maxSpeed);
+        _animator.SetFloat("Speed", Mathf.Abs(_speed.x) / _maxSpeed);
         _animator.SetBool(isWalkingHash, isWalking);
     }
     public void SetTranslate(Vector3 direction)

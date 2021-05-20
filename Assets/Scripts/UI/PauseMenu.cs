@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 
 
@@ -12,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     private InputMaster controls;
-    
+
     private void Awake()
     {
         controls = new InputMaster();
@@ -28,8 +29,8 @@ public class PauseMenu : MonoBehaviour
         controls.Disable();
         controls.UI.Cancel.performed -= ctx => OnCancel();
     }
-    
-    void OnCancel()
+
+    public void OnCancel()
     {
         if (GameIsPaused)
         {

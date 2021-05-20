@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     //private InputMaster controls;
     
     private Character character;
-  
+    private PlayerInput playerInput;
+
+
     private void Awake()
     {
-        
+        playerInput = GetComponent<PlayerInput>();
         character = GetComponent<Character>();
         /*
         controls = new InputMaster();
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         //controls.Disable();
     }
-    public void Move(InputAction.CallbackContext ctx)
+    public void OnMovement(InputAction.CallbackContext ctx)
     {
         if(ctx.performed)
         {
@@ -47,11 +49,11 @@ public class PlayerController : MonoBehaviour
         
     }
     
-    public void Jump(InputAction.CallbackContext ctx)
+    public void OnJump(InputAction.CallbackContext ctx)
     {   
         character.Jump();
     }
-    public void Crouch(InputAction.CallbackContext ctx)
+    public void OnCrouch(InputAction.CallbackContext ctx)
     {
         if(ctx.performed)
         {
@@ -63,12 +65,35 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    public void PrimaryAttack(InputAction.CallbackContext ctx)
+    public void OnPrimaryAttack(InputAction.CallbackContext ctx)
     {
         character.PrimaryAttack();
     }
-    public void SecondaryAttack(InputAction.CallbackContext ctx)
+    public void OnSecondaryAttack(InputAction.CallbackContext ctx)
     {
         character.SecondaryAttack();
     }
+
+    public void OnMenuToggle(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            GameManager.Instance.TogglePauseState(this);
+        }
+    }
+
+    public void EnableGameplayControls()
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    public void EnablePauseMenuControls()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
+    }
+    public InputActionAsset GetActionAsset()
+    {
+        return playerInput.actions;
+    }
+
 }
