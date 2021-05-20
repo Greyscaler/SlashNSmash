@@ -20,7 +20,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""2da19106-a36e-40f7-b0f5-f0b81c5d56fa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -78,14 +78,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""name"": ""Use"",
                     ""type"": ""Button"",
                     ""id"": ""3c825dcb-ada2-4a4d-9b31-56e174bd5df4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MenuToggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""c4316ef5-619d-4f88-9666-77b8a65c0029"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -509,28 +501,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bceb0959-cf0d-4048-b996-92fa91ca32a1"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""MenuToggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""17b5a3b1-5693-421b-8cca-89d0569cb02b"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MenuToggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -540,15 +510,15 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""a4a743b6-27af-49d5-85f7-b06582e8496b"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""Submit"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""6f4f7040-932a-49ce-979b-3047b76232a1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -556,7 +526,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""656b4e21-270d-4118-a5ea-4c0e169dc04b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -572,7 +542,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Click"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""e6cc50c1-ac03-47ee-b43e-f03508350f3a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -615,14 +585,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""f82a32c2-0885-4d54-a6bd-c0e3251c4ffe"",
                     ""expectedControlType"": ""Quaternion"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MenuToggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""c9b20524-e33b-4bf4-af31-cf2e32c0a12c"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -810,7 +772,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -821,7 +783,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -832,7 +794,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -843,7 +805,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -854,7 +816,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -865,7 +827,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -876,7 +838,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -887,7 +849,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -942,7 +904,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -953,7 +915,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Pen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -964,7 +926,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/touch*/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch;Keyboard and Mouse"",
+                    ""groups"": ""Touch"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -975,7 +937,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -986,7 +948,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Pen>/tip"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -997,7 +959,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/touch*/press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Touch;Keyboard and Mouse"",
+                    ""groups"": ""Touch"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1008,7 +970,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<XRController>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XR;Gamepad"",
+                    ""groups"": ""XR"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1019,7 +981,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ScrollWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1030,7 +992,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""MiddleClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1041,7 +1003,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Keyboard and Mouse"",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1052,7 +1014,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<XRController>/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XR;Gamepad"",
+                    ""groups"": ""XR"",
                     ""action"": ""TrackedDevicePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1063,30 +1025,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""path"": ""<XRController>/deviceRotation"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XR;Gamepad"",
+                    ""groups"": ""XR"",
                     ""action"": ""TrackedDeviceOrientation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""03d3f262-d939-4085-8040-45c80fc2c9ab"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""MenuToggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""384c639c-9735-48a1-aee9-d770897eb8ff"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""MenuToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1133,7 +1073,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_AttackUlt = m_Player.FindAction("AttackUlt", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
-        m_Player_MenuToggle = m_Player.FindAction("MenuToggle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1146,7 +1085,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-        m_UI_MenuToggle = m_UI.FindAction("MenuToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1204,7 +1142,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_AttackUlt;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Use;
-    private readonly InputAction m_Player_MenuToggle;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -1217,7 +1154,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @AttackUlt => m_Wrapper.m_Player_AttackUlt;
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Use => m_Wrapper.m_Player_Use;
-        public InputAction @MenuToggle => m_Wrapper.m_Player_MenuToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1251,9 +1187,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
-                @MenuToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuToggle;
-                @MenuToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuToggle;
-                @MenuToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuToggle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1282,9 +1215,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Use.started += instance.OnUse;
                 @Use.performed += instance.OnUse;
                 @Use.canceled += instance.OnUse;
-                @MenuToggle.started += instance.OnMenuToggle;
-                @MenuToggle.performed += instance.OnMenuToggle;
-                @MenuToggle.canceled += instance.OnMenuToggle;
             }
         }
     }
@@ -1303,7 +1233,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
-    private readonly InputAction m_UI_MenuToggle;
     public struct UIActions
     {
         private @InputMaster m_Wrapper;
@@ -1318,7 +1247,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
-        public InputAction @MenuToggle => m_Wrapper.m_UI_MenuToggle;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1358,9 +1286,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
-                @MenuToggle.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuToggle;
-                @MenuToggle.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuToggle;
-                @MenuToggle.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuToggle;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1395,9 +1320,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
-                @MenuToggle.started += instance.OnMenuToggle;
-                @MenuToggle.performed += instance.OnMenuToggle;
-                @MenuToggle.canceled += instance.OnMenuToggle;
             }
         }
     }
@@ -1430,7 +1352,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnAttackUlt(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
-        void OnMenuToggle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1444,6 +1365,5 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
-        void OnMenuToggle(InputAction.CallbackContext context);
     }
 }

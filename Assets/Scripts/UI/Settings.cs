@@ -23,8 +23,8 @@ public class Settings : MonoBehaviour
     
     private void Awake()
     {
-         controls = new InputMaster();
-         controls.UI.Cancel.performed += ctx => onEscapeDown();
+        controls = new InputMaster();
+        controls.UI.Cancel.performed += ctx => onEscapeDown();
     }
     private void Start()
     {

@@ -189,25 +189,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4702229198241056, guid: 0ba258545da721e488ecb71ffd143b6f, type: 3}
   m_PrefabInstance: {fileID: 6537148}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &47101861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
-  m_PrefabInstance: {fileID: 552265441}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &47101862
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47101861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
 --- !u!1001 &48693230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -850,8 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02f447901d35354cb65362ef9946382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1641923672}
-  eventManager: {fileID: 1152258208}
   character: {fileID: 4288744441607505021, guid: 0076de455ae41bd43bbd984fa2cbc883, type: 3}
   spawnPointPlayer: {fileID: 599557680}
   spawnPointEnemy: {fileID: 406967894}
@@ -1900,25 +1879,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4252784401376168, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
   m_PrefabInstance: {fileID: 223226636}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &223744490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
-  m_PrefabInstance: {fileID: 457368148}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &223744491
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223744490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
 --- !u!1001 &230290536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7727,7 +7687,6 @@ MonoBehaviour:
   playerSpawn: {fileID: 599557680}
   enemySpawn: {fileID: 406967894}
   minZDistance: 10
-  height: 1
   margine: 5
 --- !u!114 &963194230
 MonoBehaviour:
@@ -8492,7 +8451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087014177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b077587c6407a044b14f2216a977f4c, type: 3}
   m_Name: 
@@ -9044,25 +9003,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4538304254603464, guid: 7a77ea810bbc0db4992e500affe32dbf, type: 3}
   m_PrefabInstance: {fileID: 1156114597}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1159134085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
-  m_PrefabInstance: {fileID: 739254048}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1159134086
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159134085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
 --- !u!1001 &1169770972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12554,25 +12494,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
---- !u!1 &1632085194 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
-  m_PrefabInstance: {fileID: 717377453}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1632085195
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632085194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
 --- !u!1 &1635655792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1855710351377478, guid: 5c9211eb71cff4f4996a21d92317f601, type: 3}
@@ -13608,7 +13529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319135450738397273, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4319135450738397273, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13958,30 +13879,6 @@ PrefabInstance:
       propertyPath: DeselectAll
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 470
-      objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 755
-      objectReference: {fileID: 0}
-    - target: {fileID: 6959752612193319408, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -150
-      objectReference: {fileID: 0}
     - target: {fileID: 7424671529317704204, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
@@ -14081,22 +13978,6 @@ PrefabInstance:
     - target: {fileID: 9201974974459068974, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201974974459068975, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201974974459068975, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201974974459068975, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 142.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201974974459068975, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -78.6795
       objectReference: {fileID: 0}
     - target: {fileID: 9201974974459069013, guid: 4dac1f40104305e41a7cf2af5b40267e, type: 3}
       propertyPath: deselectOtherButtons

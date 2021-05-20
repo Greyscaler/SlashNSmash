@@ -41,7 +41,7 @@ public class DefaultJump : MonoBehaviour, IJump
 
     private void Update()
     {
-        isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);    //Creating sphere to check if character is grounded
+        isGrounded = Physics.CheckSphere(_groundCheck.position,_groundDistance,_groundMask);    //Creating sphere to check if character is grounded
 
         if (isGrounded && _velocity.y < 0)
         {
@@ -50,11 +50,11 @@ public class DefaultJump : MonoBehaviour, IJump
         }
         else
         {
-            _animator.SetBool(isGroundedHash, false);
+            _animator.SetBool(isGroundedHash,false);
         }
-
+        
         _velocity.y += gravity * Time.deltaTime;
-
+        
         _characterController.Move(_velocity * Time.deltaTime);
     }
     public void Jump()
