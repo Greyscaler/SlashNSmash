@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform playerSpawn;
     [SerializeField] private Transform enemySpawn;
     [SerializeField] private float minZDistance=10f;
+    [SerializeField] private float height = 1.0f;
     [SerializeField] private float margine = 5.0f;
     private Transform[] characters = new Transform[2];
     private Camera mainCamera;
@@ -34,7 +35,7 @@ public class CameraController : MonoBehaviour
                 camPosZ = -minZDistance;
             }
         }
-        
+
         else
         {
             foreach (Transform character in characters)
@@ -43,12 +44,12 @@ public class CameraController : MonoBehaviour
                 {
                     camPosX = transform.position.x + (Mathf.Abs(character.position.x - transform.position.x) - minXDistance / 2);
                 }
-                else if(character.position.x < transform.position.x - minXDistance / 2)
+                else if (character.position.x < transform.position.x - minXDistance / 2)
                 {
                     camPosX = transform.position.x - (Mathf.Abs(character.position.x - transform.position.x) - minXDistance / 2);
                 }
             }
         }
-        transform.position = new Vector3(camPosX, 0, camPosZ);
+        transform.position = new Vector3(camPosX, height, camPosZ);
     }
 }

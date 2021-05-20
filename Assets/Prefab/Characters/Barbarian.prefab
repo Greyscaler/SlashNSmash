@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 9030350885862995972}
   - component: {fileID: 4253611376143886203}
   - component: {fileID: 137177195664534050}
-  - component: {fileID: 6592437160370441874}
+  - component: {fileID: 2232192007602258581}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ae65e2953943c4ab065376100f0556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 0.2
+  _acceleration: 0.3
   _smoothTime: 0.1
   _maxSpeed: 10
 --- !u!114 &3124264258414030132
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   _attackPoint: {fileID: 8559507331504573658}
   _attackRange: 0.3
   _knockbackForce: 10
---- !u!114 &6592437160370441874
+--- !u!114 &2232192007602258581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1216,7 +1216,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9030350885862995972}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1232,7 +1232,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9030350885862995972}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1248,7 +1248,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9030350885862995972}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Crouch
+        m_MethodName: OnCrouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1264,7 +1264,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9030350885862995972}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: PrimaryAttack
+        m_MethodName: OnPrimaryAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1280,7 +1280,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9030350885862995972}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SecondaryAttack
+        m_MethodName: OnSecondaryAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1293,51 +1293,15 @@ MonoBehaviour:
     m_ActionId: 309eaca9-2234-4bf2-96b6-1211becb66a3
     m_ActionName: Player/AttackSecondary[/Keyboard/k,/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 57596fe5-3ebd-4489-b16e-da46d79f5bed
     m_ActionName: Player/AttackUlt[/Keyboard/f,/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d8600f8d-0e65-4cb2-b1ca-5551c5d38956
     m_ActionName: Player/Block[/Keyboard/leftShift,/Keyboard/l]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 3c825dcb-ada2-4a4d-9b31-56e174bd5df4
     m_ActionName: Player/Use[/Keyboard/e,/Keyboard/enter]
   - m_PersistentCalls:
@@ -1380,9 +1344,41 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f82a32c2-0885-4d54-a6bd-c0e3251c4ffe
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9030350885862995972}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMenuToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c4316ef5-619d-4f88-9666-77b8a65c0029
+    m_ActionName: Player/MenuToggle[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9030350885862995972}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMenuToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c9b20524-e33b-4bf4-af31-cf2e32c0a12c
+    m_ActionName: UI/MenuToggle[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard and Mouse
-  m_DefaultActionMap: a8e67938-d568-42d6-9241-7be6fac54387
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &4288744441607505023
