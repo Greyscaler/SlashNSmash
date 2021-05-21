@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour, IDamageable
 {
@@ -15,7 +16,7 @@ public class Character : MonoBehaviour, IDamageable
     private bool _movementEnabled = true;
     private bool _attackEnabled = true;
    
-    private int _health = 30;
+    private int _health;
     private int _maxHealth = 100;
 
     public int EnemyLayer => _enemyLayer;
@@ -24,6 +25,12 @@ public class Character : MonoBehaviour, IDamageable
 
     public bool MovementEnabled { get => _movementEnabled; set => _movementEnabled = value; }
     public bool AttackEnabled { get => _attackEnabled; set => _attackEnabled = value; }
+
+
+
+    [System.Serializable]
+    public class HealthEvent : UnityEvent<int> { }
+    public HealthEvent OnHealthChange;
 
     private void Awake()
     {
@@ -36,7 +43,14 @@ public class Character : MonoBehaviour, IDamageable
         secondaryAttack = GetComponent<ISecondaryAttack>();
         crouchCharacter = GetComponent<ICrouch>();
         _animator = GetComponent<Animator>();
+        OnHealthChange = new HealthEvent();
     }
+
+    private void Start()
+    {
+        Health = MaxHealth;
+    }
+
     private int GetEnemyLayer(int[] layers, int playerLayer)
     {   
         foreach (int layer in layers)
@@ -88,6 +102,7 @@ public class Character : MonoBehaviour, IDamageable
         {
             Die();
         }
+        OnHealthChange.Invoke(Health);
     }
 
     public void Crouch(bool value)

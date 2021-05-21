@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
+
 public class GameManager : Singleton<GameManager>
 {
     InputMaster controls;
@@ -14,6 +14,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject character;
     [SerializeField] private Transform spawnPointPlayer;
     [SerializeField] private Transform spawnPointEnemy;
+
+    [SerializeField] private HealthBar playerHealthBar;
+    [SerializeField] private HealthBar enemyHealthBar;
+
+
     private GameObject player;
     private GameObject enemy;
     private int[] _layers = new int[2];
@@ -32,30 +37,32 @@ public class GameManager : Singleton<GameManager>
         
         player = Instantiate(character, spawnPointPlayer);
         player.gameObject.name = "BarbarianPlayer";
-        
+
+        Character playerCharacter = player.GetComponent<Character>();
+        playerHealthBar.SetMaxHealth(playerCharacter.MaxHealth);
+        playerCharacter.OnHealthChange.AddListener(playerHealthBar.SetHealth);
 
         Imovable playerCharacterMove = player.GetComponent<Imovable>();
         playerCharacterMove.SetRotate(Vector3.right);
 
-       // PlayerController playerController = player.GetComponent<PlayerController>();
-       // playerController.enabled = true;
-       // var playerInput = PlayerInput.Instantiate(player, 0, "Keyboard and Mouse",0, Keyboard.current);
-     //   playerInput.DeactivateInput();
-     // playerInput.uiInputModule = ui;
-     //   playerInput.SwitchCurrentActionMap("UI");
-    //    Debug.Log(playerInput.uiInputModule);
+       
         
     }
     private void SpawnEnemy()
     {
         enemy = Instantiate(character, spawnPointEnemy);
         enemy.gameObject.name = "BarbarianEnemy";
+
+        Character enemyCharacter = enemy.GetComponent<Character>();
+        enemyHealthBar.SetMaxHealth(enemyCharacter.MaxHealth);
+        enemyCharacter.OnHealthChange.AddListener(enemyHealthBar.SetHealth);
+
         Imovable enemyCharacterMove = enemy.GetComponent<Imovable>();
         enemyCharacterMove.SetRotate(Vector3.left);
         if (Gamepad.all.Count == 0)
         {
             AI enemyController = enemy.GetComponent<AI>();
-         //   enemyController.enabled = true;
+            enemyController.enabled = true;
         }
         else
         {
